@@ -1,14 +1,18 @@
 /**
  * Middleware d'erreur centralisé (4 arguments : c'est ainsi qu'Express le reconnaît).
- * TODO (partie 2) :
- *  - JSON mal formé (err.type === "entity.parse.failed") → 400 { error: "INVALID_JSON" }
- *  - corps trop gros (err.type === "entity.too.large")    → 413 { error: "PAYLOAD_TOO_LARGE" }
- *  - toute autre erreur → 500 { error: "INTERNAL_ERROR" }, journalisée côté serveur
- *  - ne JAMAIS renvoyer err.stack ni le message SQL au client
- *
- * La version actuelle est volontairement dangereuse : elle divulgue la stack trace.
+ * Le client ne reçoit jamais de stack trace ni de message interne.
  */
 // eslint-disable-next-line no-unused-vars
 export function errorHandler(err, req, res, next) {
-  res.status(500).json({ error: err.message, stack: err.stack });
+  if (err.type === "entity.parse.failed") {
+    return res.status(400).json({ error: "INVALID_JSON" });
+  }
+
+  if (err.type === "entity.too.large") {
+    return res.status(413).json({ error: "PAYLOAD_TOO_LARGE" });
+  }
+
+  // Détails journalisés côté serveur uniquement
+  console.error(err);
+  return res.status(500).json({ error: "INTERNAL_ERROR" });
 }

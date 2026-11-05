@@ -18,8 +18,9 @@ export function createApp({ contactRepository }) {
   // TODO (partie 3) : appliquer un rate limiter uniquement sur /api/contact
   app.use("/api/contact", contactRouter({ contactRepository }));
 
-  // TODO (partie 2) : route 404 au format JSON pour toutes les autres URL
-
+  app.use((req, res) => {
+    res.status(404).json({ error: "NOT_FOUND" });
+  });
   // Le middleware d'erreur doit être déclaré EN DERNIER.
   app.use(errorHandler);
   return app;

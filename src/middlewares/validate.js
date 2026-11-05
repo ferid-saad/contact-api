@@ -1,12 +1,21 @@
 /**
- * Middleware générique de validation.
- * TODO (partie 2) :
- *  - appeler schema.safeParse(req.body)
- *  - si échec : répondre 400 avec { error: "VALIDATION_ERROR", details: [...] }
- *    (details = liste { field, message } construite à partir de result.error.issues)
- *  - si succès : remplacer req.body par result.data puis appeler next()
+ * Middleware générique de validation avec un schéma Zod.
+ * Échec : 400 VALIDATION_ERROR avec la liste des champs fautifs.
+ * Succès : req.body est remplacé par les données validées (nettoyées).
  */
-// eslint-disable-next-line no-unused-vars
 export const validate = (schema) => (req, res, next) => {
+  const result = schema.safeParse(req.body);
+
+  if (!result.success) {
+    return res.status(400).json({
+      error: "VALIDATION_ERROR",
+      details: result.error.issues.map((issue) => ({
+        field: issue.path.join("."),
+        message: issue.message,
+      })),
+    });
+  }
+
+  req.body = result.data;
   next();
 };
