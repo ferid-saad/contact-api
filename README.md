@@ -21,8 +21,8 @@ durcissement HTTP (Helmet, limite de taille, rate limiting), tests automatisés
 ## Avancement
 
 - [x] Mise en place du projet
-- [ ] Partie 1 : tableau OWASP (voir OWASP.md)
-- [ ] Partie 2 : validation et gestion des erreurs
+- [x] Partie 1 : tableau OWASP (voir OWASP.md)
+- [x] Partie 2 : validation et gestion des erreurs
 - [ ] Partie 3 : durcissement HTTP
 - [ ] Partie 4 : tests de routes
 - [ ] Partie 5 : intégration PostgreSQL et migrations
