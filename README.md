@@ -30,3 +30,41 @@ durcissement HTTP (Helmet, limite de taille, rate limiting), tests automatisés
 ## Captures
 
 Les captures sont dans le dossier `captures/`.
+## Captures
+
+![Validation 400](captures/validation-400.png)
+![Headers Helmet](captures/helmet-headers.png)
+![Rate limit 429](captures/rate-limit-429.png)
+![Tests](captures/tests-ok.png)
+![Couverture](captures/coverage.png)
+![Intégration](captures/integration-ok.png)
+
+
+---
+
+# TP9 : Pipeline as Code avec Jenkins
+
+Pipeline Jenkins décrit dans le dépôt (`Jenkinsfile`) pour `contact-api` : stages,
+exécution parallèle, agent Docker, credentials, rapport JUnit, image Docker taguée
+avec le Git SHA, puis job Multibranch (une branche et une Pull Request).
+
+## Prérequis
+
+- Jenkins LTS sur la VM Ubuntu avec Docker (utilisateur `jenkins` dans le groupe `docker`)
+- Plugins : Pipeline, Git, GitHub Branch Source, Docker Pipeline, JUnit,
+  Credentials Binding, Workspace Cleanup, Timestamper
+- Compte Docker Hub avec un access token
+
+## Avancement
+
+- [ ] Partie 1 : premier pipeline depuis le dépôt (Pipeline script from SCM)
+- [ ] Partie 2 : agent Docker, stages parallèles, rapport JUnit
+- [ ] Partie 3 : image taguée avec le Git SHA, credentials, push depuis `main`
+- [ ] Partie 4 : Multibranch Pipeline (branche et Pull Request)
+- [ ] Défi : Shared Library et GitHub Checks (optionnel)
+
+## Captures du TP9
+
+Les captures sont dans `captures/tp9/` :
+`pipeline-stages.png`, `junit-report.png`, `credentials-masked.png`,
+`dockerhub-sha-tag.png`, `multibranch.png`, `shared-library.png` (défi).
