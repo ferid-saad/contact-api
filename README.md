@@ -32,12 +32,12 @@ durcissement HTTP (Helmet, limite de taille, rate limiting), tests automatisés
 Les captures sont dans le dossier `captures/`.
 ## Captures
 
-![Validation 400](./captures/validation-400.png)
-![Headers Helmet](./captures/helmet-headers.png)
-![Rate limit 429](./captures/rate-limit-429.png)
-![Tests](./captures/tests-ok.png)
-![Couverture](./captures/coverage.png)
-![Intégration](./captures/integration-ok.png)
+![Validation 400](captures/tp8/validation-400.png)
+![Headers Helmet](captures/tp8/helmet-headers.png)
+![Rate limit 429](captures/tp8/rate-limit-429.png)
+![Tests](captures/tp8/tests-ok.png)
+![Couverture](captures/tp8/coverage.png)
+![Intégration](capturestp8//integration-ok.png)
 
 
 ---
