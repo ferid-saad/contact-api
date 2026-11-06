@@ -60,7 +60,7 @@ avec le Git SHA, puis job Multibranch (une branche et une Pull Request).
 - [x] Partie 1 : premier pipeline depuis le dépôt (Pipeline script from SCM)
 - [x] Partie 2 : agent Docker, stages parallèles, rapport JUnit
 - [x] Partie 3 : image taguée avec le Git SHA, credentials, push depuis `main`
-- [ ] Partie 4 : Multibranch Pipeline (branche et Pull Request)
+- [x] Partie 4 : Multibranch Pipeline (branche et Pull Request)
 - [ ] Défi : Shared Library et GitHub Checks (optionnel)
 
 ## Captures du TP9
@@ -68,3 +68,11 @@ avec le Git SHA, puis job Multibranch (une branche et une Pull Request).
 Les captures sont dans `captures/tp9/` :
 `pipeline-stages.png`, `junit-report.png`, `credentials-masked.png`,
 `dockerhub-sha-tag.png`, `multibranch.png`, `shared-library.png` (défi).
+
+
+![pipeline-stages](captures/tp9/pipeline-stages.png)
+![junit-report](captures/tp9/junit-report.png)
+![credentials-masked](captures/tp9/credentials-masked.png)
+![dockerhub-sha-tag](captures/tp9/dockerhub-sha-tag.png)
+![multibranch](captures/tp9/multibranch.png)
+
