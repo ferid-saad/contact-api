@@ -58,6 +58,25 @@ pipeline {
     stage('Build') {
       steps {
         sh 'docker build --label org.opencontainers.image.revision="$GIT_COMMIT" -t "$IMAGE_NAME:$SHORT_SHA" .'
+        sh 'echo "$IMAGE_NAME:$SHORT_SHA" > image.txt'
+      }
+    }
+
+    stage('Push') {
+      when {
+        expression {
+          def b = env.BRANCH_NAME ?: env.GIT_BRANCH
+          return b == 'main' || b == 'origin/main'
+        }
+      }
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'dockerhub',
+                          usernameVariable: 'DH_USER', passwordVariable: 'DH_TOKEN')]) {
+          sh 'echo "$DH_TOKEN" | docker login -u "$DH_USER" --password-stdin'
+          sh 'docker push "$IMAGE_NAME:$SHORT_SHA"'
+          sh 'docker logout'
+        }
+        archiveArtifacts artifacts: 'image.txt', fingerprint: true
       }
     }
   }
