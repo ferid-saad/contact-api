@@ -59,7 +59,7 @@ avec le Git SHA, puis job Multibranch (une branche et une Pull Request).
 
 - [x] Partie 1 : premier pipeline depuis le dépôt (Pipeline script from SCM)
 - [x] Partie 2 : agent Docker, stages parallèles, rapport JUnit
-- [ ] Partie 3 : image taguée avec le Git SHA, credentials, push depuis `main`
+- [x] Partie 3 : image taguée avec le Git SHA, credentials, push depuis `main`
 - [ ] Partie 4 : Multibranch Pipeline (branche et Pull Request)
 - [ ] Défi : Shared Library et GitHub Checks (optionnel)
 
