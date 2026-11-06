@@ -20,13 +20,38 @@ pipeline {
     }
 
     stage('Install') {
+      agent {
+        docker {
+          image 'node:24-alpine'
+          reuseNode true
+          args '-e HOME=/tmp'
+        }
+      }
       steps { sh 'npm ci' }
     }
 
     stage('Quality') {
-      steps {
-        sh 'npm run lint'
-        sh 'npm test'
+      parallel {
+        stage('Lint') {
+          agent {
+            docker {
+              image 'node:24-alpine'
+              reuseNode true
+              args '-e HOME=/tmp'
+            }
+          }
+          steps { sh 'npm run lint' }
+        }
+        stage('Unit tests') {
+          agent {
+            docker {
+              image 'node:24-alpine'
+              reuseNode true
+              args '-e HOME=/tmp'
+            }
+          }
+          steps { sh 'npm run test:ci' }
+        }
       }
     }
 
@@ -38,6 +63,9 @@ pipeline {
   }
 
   post {
+    always {
+      junit allowEmptyResults: true, testResults: 'reports/junit.xml'
+    }
     success { echo 'Pipeline OK' }
     failure { echo 'Pipeline en échec' }
     cleanup { cleanWs() }
