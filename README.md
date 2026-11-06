@@ -37,7 +37,7 @@ Les captures sont dans le dossier `captures/`.
 ![Rate limit 429](captures/tp8/rate-limit-429.png)
 ![Tests](captures/tp8/tests-ok.png)
 ![Couverture](captures/tp8/coverage.png)
-![Intégration](capturestp8//integration-ok.png)
+![Intégration](captures/tp8/integration-ok.png)
 
 
 ---
